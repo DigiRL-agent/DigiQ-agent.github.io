@@ -1,0 +1,86 @@
+{
+  "avg_micro": [
+    [
+      "Set-of-Marks GPT-4V",
+      17.58
+    ],
+    [
+      "Set-of-Marks Gemini-1.5-Pro",
+      38.4
+    ],
+    [
+      "AppAgent GPT-4V",
+      15.7
+    ],
+    [
+      "AppAgent Gemini-1.5-Pro",
+      31.91
+    ],
+    [
+      "AutoUI Pre-trained",
+      22.35
+    ],
+    [
+      "CogAgent Pre-trained",
+      42.66
+    ],
+    [
+      "AutoUI Filtered BC Offline",
+      27.3
+    ],
+    [
+      "AutoUI DigiRL Offline",
+      16.21
+    ],
+    [
+      "AutoUI Filtered BC Online",
+      25.94
+    ],
+    [
+      "AutoUI DigiRL Online",
+      43.69
+    ]
+  ],
+  "reasoning": [
+    [
+      "Set-of-Marks GPT-4V",
+      17.58
+    ],
+    [
+      "Set-of-Marks Gemini-1.5-Pro",
+      38.4
+    ],
+    [
+      "AppAgent GPT-4V",
+      15.7
+    ],
+    [
+      "AppAgent Gemini-1.5-Pro",
+      31.91
+    ],
+    [
+      "AutoUI Pre-trained",
+      22.35
+    ],
+    [
+      "CogAgent Pre-trained",
+      42.66
+    ],
+    [
+      "AutoUI Filtered BC Offline",
+      27.3
+    ],
+    [
+      "AutoUI DigiRL Offline",
+      16.21
+    ],
+    [
+      "AutoUI Filtered BC Online",
+      25.94
+    ],
+    [
+      "AutoUI DigiRL Online",
+      43.69
+    ]
+  ]
+}
