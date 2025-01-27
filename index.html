@@ -249,8 +249,7 @@ improvement over prior best-performing method.
                             <li><b>Supervised Fine-Tuning</b> 1) requires a large amount of human demonstration data and 2) cannot recover from degrading model performance when real websites/applications have changed. As shown in the plot below, a frozen good policy trained with prior data experiences a gradual drop in performance as the websites change over time, while the DigiRL policy constantly updates with fresh autonomous data can maintain a stable performance.</li>
                         </ul>
                     </div>
-                    <div class="text-center">
-                        <!-- button for visualizing offline or not -->
+                    <!-- <div class="text-center">
                         <div class="btn-group btn-group-toggle text-center task-selector" data-toggle="buttons">
                             <button type="button" class="btn btn-outline-secondary btn-sm inline-vis-button" disabled
                                 id="visualize-sr-vs-k-scale-with-model-size-llama2-base-disabled">Visualization:</button>
@@ -259,15 +258,12 @@ improvement over prior best-performing method.
                             <button type="button" class="btn btn-outline-secondary btn-sm"
                                 id="inc-offline">Include Offline Results</button>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="text-justified">
-                        <div class="chart-container" id="chart-k2" style="display:block;margin:0 auto;">
-                            <canvas id="chart-sr-vs-k2"></canvas>
-                        </div>
-                        <h3> What are we using RL for?</h3>
-                        DigiRL consists of two steps:
+                        <h3> How did we get Value-based RL work on Device Control?</h3>
+                        Digi-Q consists of two steps:
                         <ul class="custom-bullets">
-                            <li>First, we use <b>Offline RL</b> to make the most out of a potentially sub-optimal existing offline dataset.</li>
+                            <li>First, we use <b>Representation Fine-tuning</b> to make the VLM aware of what it needs to focus on.</li>
                             <li>Then, we use <b>Offline-to-Online RL</b> to encourage the agent to learn from its own trials and errors.</li>
                         </ul>
                         DigiRL identifies the most simple yet effective RL design choices for device-control agent problems. Our RL algorithmic framework automatically achieves the following advantages compared to state-of-the-art alternatives such as rejection sampling (or Filtered Behavior Cloning):
@@ -284,23 +280,9 @@ improvement over prior best-performing method.
                         </div>
                         <h3>Q Values We Observed</h3>
                         <div class="text-justified" id="tool-augmented">
-                            In addition to the convergence performance reported in the paper, we also present the sample complexity comparison of DigiRL against the state-of-the-art alternative Filtered Behavior Cloning (or rejection sampling). We find that DigiRL not only converges to a superior performance, but also learns more efficiently.
+                            We randomly picked some states and examine Q values of different actions over these states.
                         </div>
-                        <div class="text-center">
-                            <br>
-                            <div class="btn-group btn-group-toggle text-center task-selector" data-toggle="buttons">
-                                <button type="button" class="btn btn-outline-secondary btn-sm inline-vis-button" disabled
-                                    id="visualize-sr-vs-k-scale-with-model-size-llama2-base-disabled">Subset:</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm active"
-                                    id="visualize-sr-vs-k-scale-with-model-size-llama2-base">AitW General (click to visualize)</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm"
-                                    id="visualize-sr-vs-k-scale-with-model-size-llama2-rlhf">AitW Web Shopping</button>
-                            </div>
-                        </div>
-                        <div class="chart-container" id="chart-k" style="display:block;margin:0 auto;">
-                            <canvas id="chart-sr-vs-k"></canvas>
-                        </div>
-
+                        
                     </div>
                 </div>
                 <!--/ Visual Effects. -->
@@ -308,12 +290,11 @@ improvement over prior best-performing method.
             </div>
     </section>
 
-    <section class="section" id="evaluation">
+    <!-- <section class="section" id="evaluation">
         <div class="container is-max-desktop">
 
             <div class="columns is-full-width">
 
-                <!-- Visual Effects. -->
                 <div class="column">
                     <div class="content">
                         <h3 class="title is-3">Autonomous Evaluation</h3>
@@ -341,7 +322,7 @@ improvement over prior best-performing method.
                             <canvas id="chart-feedback-provider"></canvas>
                         </div>
 
-                        <!-- <h3>Failure Mode Analysis</h3>
+                        <h3>Failure Mode Analysis</h3>
 
                         <p>
                             While all the types of failure modes benefit from offline and offline-to-online RL training, the most consistent and significant reduction is for the failure mode of failing to recover from mistakes. By training on autonomously-collected rollouts, our agent DigiRL is able to learn from its own mistakes and reduces failures to recover over training.
@@ -354,10 +335,10 @@ improvement over prior best-performing method.
                                     id="avg_micro">AitW General</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
                                     id="reasoning">AitW Web Shopping</button>
-                            </div> -->
+                            </div>
 
 
-                            <!-- <div class="btn-group btn-group-toggle text-center sort-by-selector" data-toggle="buttons">
+                            <div class="btn-group btn-group-toggle text-center sort-by-selector" data-toggle="buttons">
                                 <button type="button" class="btn btn-outline-secondary btn-sm" disabled>Failure:</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm active"
                                     id="sort-by-feedbacksr">Fail to recover from mistakes</button>
@@ -366,16 +347,16 @@ improvement over prior best-performing method.
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
                                     id="sort-by-feedbackdelta">Arrive at wrong goal</button>
                             </div> 
-                        </div> -->
+                        </div>
 
-                        <!-- <div class="chart-container" id="chart-feedback" style="position:relative;margin:0 auto;">
+                        <div class="chart-container" id="chart-feedback" style="position:relative;margin:0 auto;">
                             <canvas id="chart-sr-w-feedback" style="max-height: 100%;"></canvas>
-                        </div> -->
+                        </div> 
 
                     </div>
                 </div>
             </div>
-    </section>
+    </section> -->
 
     <section class="section" id="evaluation">
         <div class="container is-max-desktop">
@@ -383,15 +364,9 @@ improvement over prior best-performing method.
                 <div class="column">
                     <div class="content">
                         <h3>Misc</h3>
-                        <h4>Re the Charts &#128200 </h4>
-                        Try clicking on the legend of the charts!
-                    </div>
-                    <div class="content">
                         <h4>Re the Icon <img src="website/images/icon/icon.png" alt="logo" width="30" height="30" /></h4>
                         <p>
-                            <b>Infinity:</b> Our environment is open-ended, which can be easily generalized to infinite open-ended tasks sets with our open-ended evaluator.
-                            <br>
-                            <b>Loop:</b> We use online reinforcement learning, which is closed-loop: the agent interacts with the environment and learns from its own trials and errors.
+                            <b>Q:</b> The “Q” hat upon the Android is Chinese brush calligraphy, with a hidden “∞” inside, which relates <a href="https://digirl-agent.github.io/">DigiRL</a> (where the Android has a hat of “∞”)
                         </p>
                     </div>
                 </div>
@@ -402,11 +377,11 @@ improvement over prior best-performing method.
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
             <h2 class="title">BibTeX</h2>
-            <pre><code>@article{bai2024digirl,
-title={DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning},
-author={Bai, Hao and Zhou, Yifei and Cemri, Mert and Pan, Jiayi and Suhr, Alane and Levine, Sergey and Kumar, Aviral},
-journal={arXiv preprint arXiv:2406.11896},
-year={2024}
+            <pre><code>@article{bai2025digiq,
+title={Digi-Q: Learning VLM Q-Value Functions for Training Device-Control Agents},
+author={Bai, Hao and Zhou, Yifei and Li, Erran Li and Levine, Sergey and Kumar, Aviral},
+journal={},
+year={2025}
 }</code></pre>
         </div>
     </section>
