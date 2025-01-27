@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>DigiRL</title>
+    <title>Digi-Q</title>
     <link rel="icon" href="website/images/icon/icon.png" type="image/icon type">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,7 +68,7 @@
                     <div class="column has-text-centered">
                         <h1 class="title publication-title">
                             <img src="website/images/icon/icon.png" alt="logo" width="40" height="40" />
-                            DigiRL: Training In-The-Wild Device-Control Agents with Autonomous Reinforcement Learning
+                            Digi-Q: Learning VLM Q-Value Functions for Training Device-Control Agents
                         </h1>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
@@ -77,32 +77,28 @@
                             <span class="author-block">
                                 <a href="https://yifeizhou02.github.io">Yifei Zhou</a><sup>1*</sup>,
                             </span>
-                            <span class="author-block">
-                                <a href="https://scholar.google.com/citations?user=sMEFwf8AAAAJ&hl=en">Mert Cemri</a><sup>1</sup>,
-                            </span>
-                            <span class="author-block">
-                                <a href="https://www.jiayipan.me/">Jiayi Pan</a><sup>1</sup>,
-                            </span>
                             <br>
                             <span class="author-block">
-                                <a href="https://www.alanesuhr.com/">Alane Suhr</a><sup>1</sup>,
+                                <a href="https://www.cs.columbia.edu/~lierranli/">Li Erran Li</a><sup>3</sup>,
                             </span>
                             <span class="author-block">
                                 <a href="https://people.eecs.berkeley.edu/~svlevine/">Sergey Levine</a><sup>1</sup>,
                             </span>
                             <span class="author-block">
-                                <a href="https://aviralkumar2907.github.io/">Aviral Kumar</a><sup>3</sup>
+                                <a href="https://aviralkumar2907.github.io/">Aviral Kumar</a><sup>4,5</sup>
                             </span>
                         </div>
 
                         <div class="is-size-5 publication-authors">
                             <span class="author-block"><sup>1</sup> UC Berkeley,</span>
                             <span class="author-block"><sup>2</sup> UIUC,</span>
-                            <span class="author-block"><sup>3</sup> Google DeepMind</span>
+                            <span class="author-block"><sup>3</sup> Amazon,</span>
+                            <span class="author-block"><sup>4</sup> CMU,</span>
+                            <span class="author-block"><sup>5</sup> Google DeepMind</span>
                         </div>
 
                         <div class="is-size-5 publication-authors">
-                            <span class="author-block"><small>*Equal contribution, alphabetic order; work done at UC Berkeley</small></span>
+                            <span class="author-block"><small>*Equal contribution; work done at UC Berkeley</small></span>
 
                         <div class="column has-text-centered">
                             <div class="publication-links">
@@ -148,9 +144,9 @@
                         <h2 class="title is-3">Demo</h2>
                         <div class="text-center">
                             <div class="btn-group btn-group-toggle text-center task-selector" data-toggle="buttons">
-                                <button type="button" class="btn btn-outline-secondary btn-sm inline-vis-button" disabled>Speed:</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm active" id="fast-button">Fast</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm" id="slow-button">Slow</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm inline-vis-button" disabled>RL Algorithm:</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm active" id="fast-button">Digi-Q</button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" id="slow-button">Other Policy-based Methods</button>
                             </div>
                         </div>
                     </div>
@@ -158,13 +154,13 @@
                         <!-- All video -->
                     <div id="fast-container">
                         <video controls autoplay muted loop>
-                            <source src="website/videos/demo2_5x.mp4" type="video/mp4">
+                            <source src="website/videos/animation_digiq.mp4" type="video/mp4">
                         </video>
                     </div>
 
                     <div id="slow-container" style="display:none;">
                         <video controls autoplay muted loop>
-                            <source src="website/videos/demo2.mp4" type="video/mp4">
+                            <source src="website/videos/animation_policy_based.mp4" type="video/mp4">
                         </video>
                     </div>
                     <small>Success rate and corresponding trajectories. A <font color="#007800">green</font> final screen indicates a successful trajectory; a <font color="#ff1900">red</font> final screen indicates a failed trajectory.</s>
@@ -181,95 +177,27 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Training corpuses for vision language models typically lack sufficient amounts of decision-centric data. This renders off-the-shelf VLMs sub-optimal for decision-making tasks such as in-the-wild device control through graphical user interfaces (GUIs). While training with static demonstrations has shown some promise, we show that such methods fall short when controlling <b>real</b> GUIs due to their failure to deal with real world <b>stochasticity</b> not captured in static observational data.  
-                            This paper introduces a novel autonomous RL approach, called <b>DigiRL</b>, for training in-the-wild device control agents through fine-tuning a pre-trained VLM in two stages: offline RL to initialize the model, followed by offline-to-online RL. To do this, we build a <b>scalable</b> and <b>parallelizable</b> Android learning environment equipped with a VLM-based evaluator and develop a simple yet effective RL approach for learning in this domain. Our approach runs advantage-weighted RL with advantage estimators enhanced to account for stochasticity along with an automatic curriculum for deriving maximal learning signal. 
-                            We demonstrate the effectiveness of <b>DigiRL</b> using the Android-in-the-Wild (AitW) dataset, where our 1.5B VLM trained with RL achieves a <b>49.5% absolute improvement</b> -- from 17.7% to 67.2% success rate -- over supervised fine-tuning with static human demonstration data. These results significantly surpass not only the prior best agents, including AppAgent with GPT-4V (8.3% success rate) and the 17B CogAgent trained with AitW data (14.4%), but also the prior best autonomous RL approach based on filtered behavior cloning (57.8%), thereby <b>establishing a new state-of-the-art</b> for digital agents for in-the-wild device control.    
+While most paradigms for building foundation model agents rely on prompting or fine-tuning
+on demonstrations, it is not sufficient in dynamic environments (e.g., mobile device control). On-policy
+reinforcement learning (RL) should address these limitations, but collecting actual rollouts in an environment
+is often undesirable when using truly open-ended agentic tasks such as mobile device, where simulation is a
+bottleneck. In such scenarios, an <b>offline</b> method for policy improvement that utilizes a trained value-function
+for training the policy is much more practical. <b>In this paper, we develop a scalable value-based offline RL
+approach called Digi-Q to train VLM agents for device control entirely from static data.</b> The key idea in Digi-Q
+is to train a value function using <b>offline temporal-difference (TD)</b> learning. We show that this can be done by
+fine-tuning a Q-function on top of <b>frozen, intermediate-layer features of a VLM</b> rather than fine-tuning the
+whole VLM itself, which saves us compute and enhances training stability. To make the VLM features amenable
+for representing the value function, we need to employ an initial phase of fine-tuning to amplify coverage over
+actionable information critical for Q-functions. Once trained, we use this value function alongside a best-of-N
+policy extraction operator that imitates the best action out of multiple candidate actions from the current policy
+as ranked by the value function, enabling policy improvement without ever needing to use the simulator. Digi-Q
+outperforms several prior methods on user-scale device control tasks in Android-in-the-Wild, attaining 9.9%
+improvement over prior best-performing method.
                         </p>
                     </div>
                 </div>
             </div>
             <!--/ Abstract. -->
-        </div>
-        <div class="container is-max-desktop">
-            <div class="is-centered has-text-centered">
-                <div class="custom-column-large">
-                    <div class="is-centered custom-column-large">
-                        <h4><b>AitW General</b><br>
-                            Search for some good Italian restaurants</h4>
-                        <div class="text-center">
-                            <div class="btn-group btn-group-toggle text-center task-selector" data-toggle="buttons">
-                                <button type="button" class="btn btn-outline-secondary btn-sm inline-vis-button" disabled>Visualization:</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm active" id="all-methods">All Methods</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm" id="each-method">Each Method (pause at wish)</button>
-                            </div>
-                        </div>
-                    </div>
-                        <br>
-                        <!-- All video -->
-                        <div id="all-video-container">
-                            <video controls autoplay muted loop>
-                                <source src="website/videos/general.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                    
-                        <!-- Each video -->
-                        <div id="each-video-container" style="display:none;">
-                            <video controls autoplay muted loop>
-                                <source src="website/videos/general/slice1.mp4" type="video/mp4">
-                            </video>
-                            <video controls autoplay muted loop>
-                                <source src="website/videos/general/slice2.mp4" type="video/mp4">
-                            </video>
-                            <video controls autoplay muted loop>
-                                <source src="website/videos/general/slice3.mp4" type="video/mp4">
-                            </video>
-                            <video controls autoplay muted loop>
-                                <source src="website/videos/general/slice4.mp4" type="video/mp4">
-                            </video>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="container is-max-desktop">
-            <div class="is-centered has-text-centered">
-                <div class="custom-column-large">
-                    <div class="custom-column-large">
-                        <h4><b>AitW Web Shopping</b><br>
-                            Go to newegg.com, and search for "Alienware Aurora"</h4>
-                        <div class="text-center">
-                            <div class="btn-group btn-group-toggle text-center task-selector" data-toggle="buttons">
-                                <button type="button" class="btn btn-outline-secondary btn-sm inline-vis-button" disabled>Visualization:</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm active" id="webshop-all-methods">All Methods</button>
-                                <button type="button" class="btn btn-outline-secondary btn-sm" id="webshop-each-method">Each Method (pause at wish)</button>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <!-- All video -->
-                    <div id="all-webshop-container">
-                        <video controls autoplay muted loop>
-                            <source src="website/videos/webshop.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    
-                    <!-- Each video -->
-                    <div id="each-webshop-container" style="display:none;">
-                        <video controls autoplay muted loop>
-                            <source src="website/videos/webshop/slice1.mp4" type="video/mp4">
-                        </video>
-                        <video controls autoplay muted loop>
-                            <source src="website/videos/webshop/slice2.mp4" type="video/mp4">
-                        </video>
-                        <video controls autoplay muted loop>
-                            <source src="website/videos/webshop/slice3.mp4" type="video/mp4">
-                        </video>
-                        <video controls autoplay muted loop>
-                            <source src="website/videos/webshop/slice4.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -278,7 +206,7 @@
             <div class="hero-body">
 
                 <h2 class="subtitle">
-                    <b>DigiRL</b> solves open-ended realistic Android tasks with an novel online reinforcement learning algorithm with autonomous VLM evaluator.
+                    <b>Digi-Q</b> achieves online-level performance with offline data only, by learning a reliable state-action (Q) value function upon a fixed vision-language model (VLM) after contrastive learning.
                 </h2>
 
                 <div class="tab-content" id="myTabContent">
@@ -313,9 +241,9 @@
                 <!-- Visual Effects. -->
                 <div class="column">
                     <div class="text-justified">
-                        <h2 class="title is-3">DigiRL: Autonomous RL for Building a Strong Device-Control Agent</h2>
+                        <h2 class="title is-3">DigiRL: Representation Learning for Better Value-based RL</h2>
 
-                        <h3> Why RL over the alternatives? </h3>
+                        <h3> Why offline RL? </h3>
                         <ul class="custom-bullets">
                             <li>LLM Agent data such as device-control actions is poorly represented in the pre-training corpus of <b>Off-the-shelf proprietary VLMs</b> such as GPT4V and Gemini-1.5-Pro.</li>
                             <li><b>Supervised Fine-Tuning</b> 1) requires a large amount of human demonstration data and 2) cannot recover from degrading model performance when real websites/applications have changed. As shown in the plot below, a frozen good policy trained with prior data experiences a gradual drop in performance as the websites change over time, while the DigiRL policy constantly updates with fresh autonomous data can maintain a stable performance.</li>
@@ -348,13 +276,13 @@
                             <li>We makes use of a <b>step-level value function</b> to pick out the advantageous actions (actions that mark progress towards the goal) in a trajectory while leaving the noisy actions (actions that do not contribute to the goal).</li>
                         </ul>
                         Please check out our paper for more details of our algorithm!
-
+                        <br><br>
                         <div style="text-align:center;">
                             <img src="website/images/algo.png" alt="illustrative-example"
                                 style="margin: 0 auto; display: block; max-width: 1000px; width: 100%; height: auto;" />
                             <br>
                         </div>
-                        <h3>Learning Curves</h3>
+                        <h3>Q Values We Observed</h3>
                         <div class="text-justified" id="tool-augmented">
                             In addition to the convergence performance reported in the paper, we also present the sample complexity comparison of DigiRL against the state-of-the-art alternative Filtered Behavior Cloning (or rejection sampling). We find that DigiRL not only converges to a superior performance, but also learns more efficiently.
                         </div>
@@ -413,7 +341,7 @@
                             <canvas id="chart-feedback-provider"></canvas>
                         </div>
 
-                        <h3>Failure Mode Analysis</h3>
+                        <!-- <h3>Failure Mode Analysis</h3>
 
                         <p>
                             While all the types of failure modes benefit from offline and offline-to-online RL training, the most consistent and significant reduction is for the failure mode of failing to recover from mistakes. By training on autonomously-collected rollouts, our agent DigiRL is able to learn from its own mistakes and reduces failures to recover over training.
@@ -426,7 +354,7 @@
                                     id="avg_micro">AitW General</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
                                     id="reasoning">AitW Web Shopping</button>
-                            </div>
+                            </div> -->
 
 
                             <!-- <div class="btn-group btn-group-toggle text-center sort-by-selector" data-toggle="buttons">
@@ -437,12 +365,12 @@
                                     id="sort-by-nofeedbacksr">Get stuck midway</button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm"
                                     id="sort-by-feedbackdelta">Arrive at wrong goal</button>
-                            </div> -->
-                        </div>
+                            </div> 
+                        </div> -->
 
-                        <div class="chart-container" id="chart-feedback" style="position:relative;margin:0 auto;">
+                        <!-- <div class="chart-container" id="chart-feedback" style="position:relative;margin:0 auto;">
                             <canvas id="chart-sr-w-feedback" style="max-height: 100%;"></canvas>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
