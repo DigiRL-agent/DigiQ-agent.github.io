@@ -119,7 +119,7 @@
                                 <!-- Dataset Link. -->
                                 <span class="link-block">
 
-                                    <a href="https://drive.google.com/drive/folders/14Iu6lAHePQ2qG0ghYkVG1RG6RUu7e2Hz?usp=sharing"
+                                    <a href="https://huggingface.co/datasets/JackBAI/autoui-zeroshot-trajectories/tree/main"
                                         class="btn btn-outline-dark" role="button">&#128194;
                                         Data</a>
                             </div>
@@ -201,38 +201,6 @@ improvement over prior best-performing method.
         </div>
     </section>
 
-    <section class="hero teaser">
-        <div class="container is-max-desktop">
-            <div class="hero-body">
-
-                <h2 class="subtitle">
-                    <b>Digi-Q</b> achieves online-level performance with offline data only, by learning a reliable state-action (Q) value function upon a fixed vision-language model (VLM) after contrastive learning.
-                </h2>
-
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="benchmark-table-content" role="tabpanel"
-                        aria-labelledby="benchmark-table-content">
-
-                        <div id="benchmark-table"></div>
-                    </div>
-                    <div class="tab-pane fade" id="eurus-code-table-content" role="tabpanel"
-                        aria-labelledby="eurus-code-table-content">
-
-                        <p class="mt-2 px-2">
-                            This code subset follows the <a href="https://arxiv.org/abs/2404.02078">Eurus
-                                paper</a> and contains MBPP and HumanEval.
-                        </p>
-                    </div>
-                    <p class="mt-2 px-2">
-                        This table contains the success rate across all approaches measured in the DigiRL paper. It includes performance on
-                        two subsets: AitW General and AitW Web Shopping. The codename of GPT-4V we use is <i>gpt-4-vision-preview</i>
-                        and the codename of Gemini-1.5-Pro is <i>gemini-1.5-pro-latest</i>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section" id="interaction-framework">
         <div class="container is-max-desktop">
 
@@ -241,14 +209,17 @@ improvement over prior best-performing method.
                 <!-- Visual Effects. -->
                 <div class="column">
                     <div class="text-justified">
-                        <h2 class="title is-3">DigiRL: Representation Learning for Better Value-based RL</h2>
+                        <h2 class="title is-3">Digi-Q: Training VLM Q-Value Functions for Agentic Policy Learning</h2>
 
-                        <h3> Why offline RL? </h3>
+                        <h3> Why do we need to train an off-policy Q function for device-control agents? </h3>
                         <ul class="custom-bullets">
-                            <li>LLM Agent data such as device-control actions is poorly represented in the pre-training corpus of <b>Off-the-shelf proprietary VLMs</b> such as GPT4V and Gemini-1.5-Pro.</li>
-                            <li><b>Supervised Fine-Tuning</b> 1) requires a large amount of human demonstration data and 2) cannot recover from degrading model performance when real websites/applications have changed. As shown in the plot below, a frozen good policy trained with prior data experiences a gradual drop in performance as the websites change over time, while the DigiRL policy constantly updates with fresh autonomous data can maintain a stable performance.</li>
+                            <li>While <b>policy-based methods</b> such as <a href="https://arxiv.org/abs/1707.06347">PPO</a> and <a href="https://arxiv.org/abs/2406.11896">DigiRL</a> 
+                                can achieve strong performances through sampling a large amount of on-policy data, they may be impractical for real-world device-control tasks where <b>simulation is slow and restricted due to privacy concerns</b>. </li>
+                            <li><b>Value-based methods</b> learn an off-policy Q function from historically collected data to score a policy's actions reliably. In this way, we can significanly simplify our recipe for <b>policy improvement without costly simulations.</b> </li>
                         </ul>
                     </div>
+
+                    <img src="website/images/teaser.png"/>
                     <!-- <div class="text-center">
                         <div class="btn-group btn-group-toggle text-center task-selector" data-toggle="buttons">
                             <button type="button" class="btn btn-outline-secondary btn-sm inline-vis-button" disabled
@@ -260,33 +231,22 @@ improvement over prior best-performing method.
                         </div>
                     </div> -->
                     <div class="text-justified">
-                        <h3> How did we get Value-based RL work on Device Control?</h3>
-                        Digi-Q consists of two steps:
+                        <h3> What are the challenges for training an off-policy Q function with foundation models?</h3>
                         <ul class="custom-bullets">
-                            <li>First, we use <b>Representation Fine-tuning</b> to make the VLM aware of what it needs to focus on.</li>
-                            <li>Then, we use <b>Offline-to-Online RL</b> to encourage the agent to learn from its own trials and errors.</li>
+                            <li>(1) <b>Instability</b> in running temporal-difference (TD) learning with large models with billions of parameters.</li>
+                            <li>(2) <b>Inefficiency</b> of TD backups per unit amount of "compute" (i.e., gradient steps spent).</li>
                         </ul>
-                        DigiRL identifies the most simple yet effective RL design choices for device-control agent problems. Our RL algorithmic framework automatically achieves the following advantages compared to state-of-the-art alternatives such as rejection sampling (or Filtered Behavior Cloning):
-                        <ul class="custom-bullets">
-                            <li>We makes use of an <b>instruction-level value function</b> to implicitly construct an automatic curriculum that prioritizes on the tasks most informative to the agent.</li>
-                            <li>We makes use of a <b>step-level value function</b> to pick out the advantageous actions (actions that mark progress towards the goal) in a trajectory while leaving the noisy actions (actions that do not contribute to the goal).</li>
-                        </ul>
-                        Please check out our paper for more details of our algorithm!
-                        <br><br>
-                        <div style="text-align:center;">
-                            <img src="website/images/algo.png" alt="illustrative-example"
-                                style="margin: 0 auto; display: block; max-width: 1000px; width: 100%; height: auto;" />
-                            <br>
-                        </div>
-                        <h3>Q Values We Observed</h3>
-                        <div class="text-justified" id="tool-augmented">
-                            We randomly picked some states and examine Q values of different actions over these states.
-                        </div>
-                        
                     </div>
+                    <div class="text-justified">
+                        <h3> How does Digi-Q deal with these challenges?</h3>
+                        <ul class="custom-bullets">
+                            <li>Digi-Q trains the Q function on top of a frozen intermediate layer of the VLM, after an initial phase of <b>representation fine-tuning</b> to prime representations of a VLM to be more amenable to TD-learning. . </li>
+                            <li>Once the Q function is trained, a <b>Best-of-N policy-extraction objective</b> is applied to train the agentic policy to imitate the best-rated action per the Q-function without any additional environment interactions. </li>
+                        </ul>
+                    </div>
+                    <img src="website/images/method.png"/>
                 </div>
                 <!--/ Visual Effects. -->
-
             </div>
     </section>
 
@@ -357,6 +317,52 @@ improvement over prior best-performing method.
                 </div>
             </div>
     </section> -->
+
+
+    <section class="section" id="evaluation">
+        <div class="container is-max-desktop">
+            <div class="columns is-full-width">
+                <div class="column">
+                    <div class="content">
+                        <h3>Experiment results on Android-in-the-Wild</h3>
+                        <p>
+                            Digi-Q achieves superior performance compared to other state-of-the-art RL baselines using historically collect data. Surprisingly, it is even comparable to the strongest online RL baseline DigiRL
+                            , without relying on costly online simulations! Please refer to our paper for more analysis results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="benchmark-table-content" role="tabpanel"
+                        aria-labelledby="benchmark-table-content">
+
+                        <div id="benchmark-table"></div>
+                    </div>
+                    <div class="tab-pane fade" id="eurus-code-table-content" role="tabpanel"
+                        aria-labelledby="eurus-code-table-content">
+
+                        <p class="mt-2 px-2">
+                            This code subset follows the <a href="https://arxiv.org/abs/2404.02078">Eurus
+                                paper</a> and contains MBPP and HumanEval.
+                        </p>
+                    </div>
+                    <p class="mt-2 px-2">
+                        This table contains the success rate across all approaches measured in our paper. It includes performance on
+                        two subsets: AitW General and AitW Web Shopping.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="section" id="evaluation">
         <div class="container is-max-desktop">
