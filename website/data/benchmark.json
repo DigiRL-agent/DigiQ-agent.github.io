@@ -72,10 +72,10 @@
     "prompt":"Plain",
     "algo":"SFT",
     "method": "Pre-trained",
-    "general-train":12.5,
-    "general-test":14.6,
-    "webshop-train":14.6,
-    "webshop-test":17.7
+    "general-train":27.7,
+    "general-test":22.9,
+    "webshop-train":20.7,
+    "webshop-test":25.0
   },
   {
     "type":"Learning",
@@ -83,12 +83,12 @@
     "model-name":"AutoUI",
     "size":"1.5B",
     "prompt":"Plain",
-    "algo":"SFT+Filtered BC",
+    "algo":"Filtered BC",
     "method":"Offline",
-    "general-train":51.7,
-    "general-test":50.7,
-    "webshop-train":44.7,
-    "webshop-test":45.8
+    "general-train":51.0,
+    "general-test":54.5,
+    "webshop-train":37.2,
+    "webshop-test":43.8
   },
   {
     "type":"Learning",
@@ -96,37 +96,39 @@
     "model-name":"AutoUI",
     "size":"1.5B",
     "prompt":"Plain",
-    "algo":"SFT+DigiRL",
+    "algo":"DigiRL",
     "method":"Offline",
-    "general-train":46.9,
-    "general-test":62.8,
-    "webshop-train":39.3,
-    "webshop-test":45.8
-  },
-  {
-    "type":"Learning",
-    "model-arch":"CLIP+T5",
-    "model-name":"AutoUI",
-    "size":"1.5B",
-    "prompt":"Plain",
-    "algo":"SFT+Filtered BC",
-    "method":"Offline+Online",
     "general-train":53.5,
-    "general-test":61.5,
-    "webshop-train":53.6,
-    "webshop-test":57.8
+    "general-test":59.0,
+    "webshop-train":43.1,
+    "webshop-test":47.6
   },
+
   {
     "type":"Learning",
     "model-arch":"CLIP+T5",
     "model-name":"AutoUI",
     "size":"1.5B",
     "prompt":"Plain",
-    "algo":"SFT+DigiRL",
+    "algo":"DigiQ",
+    "method":"Offline",
+    "general-train":61.5,
+    "general-test":71.2,
+    "webshop-train":53.0,
+    "webshop-test":58.0
+  },
+
+  {
+    "type":"Learning",
+    "model-arch":"CLIP+T5",
+    "model-name":"AutoUI",
+    "size":"1.5B",
+    "prompt":"Plain",
+    "algo":"DigiRL",
     "method":"Offline+Online",
     "general-train":63.5,
-    "general-test":71.9,
-    "webshop-train":68.2,
-    "webshop-test":67.2
+    "general-test":74.5,
+    "webshop-train":52.6,
+    "webshop-test":57.3
   }
 ]
