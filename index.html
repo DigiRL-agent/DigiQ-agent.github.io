@@ -327,7 +327,8 @@ improvement over prior best-performing method.
             <div class="columns is-full-width">
                 <div class="column">
                     <div class="content">
-                        <h3>Experiment results on Android-in-the-Wild</h3>
+                        <h2 class="title is-3">Experiment results on Android-in-the-Wild</h2>
+                        <!-- <h3>Experiment results on Android-in-the-Wild</h3> -->
                         <p>
                             Digi-Q achieves superior performance compared to other state-of-the-art RL baselines using historically collect data. Surprisingly, it is even comparable to the strongest online RL baseline DigiRL
                             , without relying on costly online simulations! Please refer to our paper for more analysis results.
@@ -366,6 +367,28 @@ improvement over prior best-performing method.
         </div>
     </section>
 
+    <section class="section" id="evaluation">
+        <div class="container is-max-desktop">
+            <div class="columns is-full-width">
+                <div class="column">
+                    <div class="content">
+                        <h3>Scaling performance of Digi-Q</h3>
+                        <p>
+                            We compare the performance of Digi-Q and SOTA offline baseline DigiRL across different scales of offline data, and we found that DigiQ has the following benefits:
+                        </p>
+                        <ul class="custom-bullets">
+                            <li>(1) <b>Data efficiency</b>. By reusing off-policy data from replay buffer, Digi-Q achieves better performance with fewer data.</li>
+                            <li>(2) <b>Convergence performance</b>. By performing per-step credit assignment, Digi-Q achieves better convergence performance.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center;">
+                    <img src="website/images/data_efficiency.png" width="500"/> 
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="section" id="evaluation">
         <div class="container is-max-desktop">
