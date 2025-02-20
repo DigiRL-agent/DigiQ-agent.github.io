@@ -2,23 +2,34 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
-/* Example styling to keep videos and their captions aligned and sized */
-#videos .video-block {
-  display: inline-block;
-  margin: 10px;         /* Controls the gap around each video block */
-  text-align: center;   /* Centers the caption below each video */
-  vertical-align: top;  /* Ensures blocks align at the top edge */
-}
-
-#videos .video-block video {
-  width: 15%;           /* Adjust the video size here */
-}
-
-#videos .video-block small {
-  display: block;
-  width: 15%;           /* Match the video width */
-  margin: 0 auto;       /* Center the caption */
-}
+  /* Container fixed to 1000px total width */
+  #videos {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  /* Each video block is inline-block so they sit side by side */
+  #videos .video-block {
+    display: inline-block;
+    margin: 0;
+    vertical-align: top;
+  }
+  /* Add a 20px gap between video blocks */
+  #videos .video-block + .video-block {
+    margin-left: 20px;
+  }
+  /* Video size: each video is 490px wide */
+  #videos .video-block video {
+    display: block;
+    width: 490px;
+  }
+  /* Captions match the video width and are centered */
+  #videos .video-block small {
+    display: block;
+    width: 490px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
 .iframe-container {
   position: relative;
