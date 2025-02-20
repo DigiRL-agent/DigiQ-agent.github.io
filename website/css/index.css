@@ -2,6 +2,24 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+/* Example styling to keep videos and their captions aligned and sized */
+#videos .video-block {
+  display: inline-block;
+  margin: 10px;         /* Controls the gap around each video block */
+  text-align: center;   /* Centers the caption below each video */
+  vertical-align: top;  /* Ensures blocks align at the top edge */
+}
+
+#videos .video-block video {
+  width: 15%;           /* Adjust the video size here */
+}
+
+#videos .video-block small {
+  display: block;
+  width: 15%;           /* Match the video width */
+  margin: 0 auto;       /* Center the caption */
+}
+
 .iframe-container {
   position: relative;
   width: 100%;
