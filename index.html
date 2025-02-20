@@ -241,7 +241,7 @@ improvement over prior best-performing method.
                     <div class="text-justified">
                         <h3> How does Digi-Q deal with these challenges?</h3>
                         <ul class="custom-bullets">
-                            <li>Digi-Q trains the Q function on top of a frozen intermediate layer of the VLM, after an initial phase of <b>representation fine-tuning</b> to prime representations of a VLM to be more amenable to TD-learning. . </li>
+                            <li>Digi-Q trains the Q function on top of a frozen intermediate layer of the VLM, after an initial phase of <b>representation fine-tuning</b> to prime representations of a VLM to be more amenable to TD-learning. </li>
                             <li>Once the Q function is trained, a <b>Best-of-N policy-extraction objective</b> is applied to train the agentic policy to imitate the best-rated action per the Q-function without any additional environment interactions. </li>
                         </ul>
                     </div>
@@ -367,6 +367,33 @@ improvement over prior best-performing method.
         </div>
     </section>
 
+    <section class="section" id="trajectory">
+        <div class="container is-max-desktop">
+            <div class="has-text-centered">
+                <div class="custom-column-large">
+                    <h2 class="title is-3">Trajectory Visualizer</h2>
+                    <div class="text-center">
+                        <div class="btn-group btn-group-toggle text-center" data-toggle="buttons">
+                            <button type="button" class="btn btn-outline-secondary btn-sm active" id="traj120-button">Trajectory 120</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" id="traj120step1-button">Trajectory 120, Step 1</button>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Trajectory 120 view -->
+                    <div id="traj120-container">
+                        <img src="website/images/view_trajs.jpeg" alt="Trajectory 120" class="img-fluid">
+                    </div>
+                    <!-- Trajectory 120, Step 1 view -->
+                    <div id="traj120step1-container" style="display:none;">
+                        <img src="website/images/view_actions.jpeg" alt="Trajectory 120, Step 1" class="img-fluid">
+                    </div>
+                    <small>Click on the buttons to switch between the views.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section class="section" id="evaluation">
         <div class="container is-max-desktop">
             <div class="columns is-full-width">
@@ -389,6 +416,8 @@ improvement over prior best-performing method.
             </div>
         </div>
     </section>
+
+    
 
     <section class="section" id="evaluation">
         <div class="container is-max-desktop">
