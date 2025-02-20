@@ -393,6 +393,26 @@ improvement over prior best-performing method.
         </div>
     </section>
 
+    <script>
+        document.getElementById('traj120-button').addEventListener('click', function() {
+            // Set active state
+            this.classList.add('active');
+            document.getElementById('traj120step1-button').classList.remove('active');
+            // Show and hide containers
+            document.getElementById('traj120-container').style.display = 'block';
+            document.getElementById('traj120step1-container').style.display = 'none';
+        });
+    
+        document.getElementById('traj120step1-button').addEventListener('click', function() {
+            // Set active state
+            this.classList.add('active');
+            document.getElementById('traj120-button').classList.remove('active');
+            // Show and hide containers
+            document.getElementById('traj120step1-container').style.display = 'block';
+            document.getElementById('traj120-container').style.display = 'none';
+        });
+    </script>
+
 
     <section class="section" id="evaluation">
         <div class="container is-max-desktop">
