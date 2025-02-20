@@ -372,46 +372,27 @@ improvement over prior best-performing method.
             <div class="has-text-centered">
                 <div class="custom-column-large">
                     <h2 class="title is-3">Trajectory Visualizer</h2>
-                    <div class="text-center">
-                        <div class="btn-group btn-group-toggle text-center" data-toggle="buttons">
-                            <button type="button" class="btn btn-outline-secondary btn-sm active" id="traj120-button">Trajectory 120</button>
-                            <button type="button" class="btn btn-outline-secondary btn-sm" id="traj120step1-button">Trajectory 120, Step 1</button>
+                    <div class="columns">
+                        <div class="column">
+                            <video controls autoplay muted loop>
+                                <source src="website/videos/general1.mp4" type="video/mp4">
+                            </video>
+                            <small class="has-text-centered">Task: search for some good Italian restaurants (AitW General)</small>
+                        </div>
+                        <div class="column">
+                            <video controls autoplay muted loop>
+                                <source src="website/videos/webshop1.mp4" type="video/mp4">
+                            </video>
+                            <small class="has-text-centered">Task: go to ebay.com, search for duracell a, and select the first item</small>
                         </div>
                     </div>
-                    <br>
-                    <!-- Trajectory 120 view -->
-                    <div id="traj120-container">
-                        <img src="website/images/view_trajs.jpeg" alt="Trajectory 120" class="img-fluid">
-                    </div>
-                    <!-- Trajectory 120, Step 1 view -->
-                    <div id="traj120step1-container" style="display:none;">
-                        <img src="website/images/view_actions.jpeg" alt="Trajectory 120, Step 1" class="img-fluid">
-                    </div>
-                    <small>Click on the buttons to switch between the views.</small>
                 </div>
             </div>
         </div>
     </section>
 
-    <script>
-        document.getElementById('traj120-button').addEventListener('click', function() {
-            // Set active state
-            this.classList.add('active');
-            document.getElementById('traj120step1-button').classList.remove('active');
-            // Show and hide containers
-            document.getElementById('traj120-container').style.display = 'block';
-            document.getElementById('traj120step1-container').style.display = 'none';
-        });
+
     
-        document.getElementById('traj120step1-button').addEventListener('click', function() {
-            // Set active state
-            this.classList.add('active');
-            document.getElementById('traj120-button').classList.remove('active');
-            // Show and hide containers
-            document.getElementById('traj120step1-container').style.display = 'block';
-            document.getElementById('traj120-container').style.display = 'none';
-        });
-    </script>
 
 
     <section class="section" id="evaluation">
