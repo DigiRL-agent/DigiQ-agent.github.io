@@ -367,17 +367,15 @@ improvement over prior best-performing method.
         </div>
     </section>
     
-    <section class="section" id="example-policy-rollouts">
+    <!-- <section class="section" id="example-policy-rollouts">
       <h2 class="title is-3">Example Policy Rollouts</h2>
       <div id="videos">
-        <!-- First video + caption -->
         <div class="video-block">
           <video controls autoplay muted loop>
             <source src="website/videos/general1.mp4" type="video/mp4">
           </video>
           <small>Task: search for some good Italian restaurants (AitW General)</small>
         </div>
-        <!-- Second video + caption -->
         <div class="video-block">
           <video controls autoplay muted loop>
             <source src="website/videos/webshop1.mp4" type="video/mp4">
@@ -385,8 +383,94 @@ improvement over prior best-performing method.
           <small>Task: go to ebay.com, search for duracell a, and select the first item</small>
         </div>
       </div>
-    </section>
+    </section> -->
 
+    <!-- <div class="container is-max-desktop">
+        <div class="is-centered has-text-centered">
+            <div class="custom-column-large">
+                <div class="is-centered custom-column-large">
+                    <div id="each-video-container">
+                        <div>
+                            <video controls autoplay muted loop>
+                                <source src="website/videos/general1.mp4" type="video/mp4">
+                            </video>
+                            <br>
+                            <small>Task: search for some good Italian restaurants (AitW General)</small>
+                        </div>
+                        <div>
+                            <video controls autoplay muted loop>
+                                <source src="website/videos/webshop1.mp4" type="video/mp4">
+                            </video>
+                            <br>
+                            <small>Task: go to ebay.com, search for duracell a, and select the first item</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <section class="section" id="trajectory">
+        <div class="container is-max-desktop">
+            <div class="has-text-centered">
+                <div class="custom-column-large">
+                    <h2 class="title is-3">Trajectory Visualizer</h2>
+                    <div class="text-center">
+                        <div class="btn-group btn-group-toggle text-center" data-toggle="buttons">
+                            <button type="button" class="btn btn-outline-secondary btn-sm active" id="webshop-button">Webshop</button>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" id="general-button">General</button>
+                        </div>
+                    </div>
+                    <br>
+                    <!-- Webshop view -->
+                    <div id="webshop-container">
+                        <figure>
+                            <video style="width: 50%;" controls autoplay muted loop>
+                                <source src="website/videos/webshop1.mp4" type="video/mp4">
+                            </video>
+                            <figcaption>Task: go to ebay.com, search for duracell a, and select the first item</figcaption>
+                        </figure>
+                    </div>
+                    <!-- General view -->
+                    <div id="general-container" style="display:none;">
+                        <figure>
+                            <video style="width: 50%;" controls autoplay muted loop>
+                                <source src="website/videos/general1.mp4" type="video/mp4">
+                            </video>
+                            <figcaption>Task: search for some good Italian restaurants</figcaption>
+                        </figure>
+                    </div>
+                    <small>Click on the buttons to switch between the views.</small>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const webshopButton = document.getElementById('webshop-button');
+        const generalButton = document.getElementById('general-button');
+        const webshopContainer = document.getElementById('webshop-container');
+        const generalContainer = document.getElementById('general-container');
+    
+        webshopButton.addEventListener('click', function() {
+            webshopButton.classList.add('active');
+            generalButton.classList.remove('active');
+            webshopContainer.style.display = 'block';
+            generalContainer.style.display = 'none';
+        });
+    
+        generalButton.addEventListener('click', function() {
+            generalButton.classList.add('active');
+            webshopButton.classList.remove('active');
+            generalContainer.style.display = 'block';
+            webshopContainer.style.display = 'none';
+        });
+    });
+    </script>
+    
+    
 
     <section class="section" id="evaluation">
         <div class="container is-max-desktop">

@@ -11,13 +11,8 @@ body {
   /* Each video block is inline-block so they sit side by side */
   #videos .video-block {
     display: inline-block;
-    margin: 10;
-    vertical-align: top;
   }
-  /* Add a 20px gap between video blocks */
-  #videos .video-block + .video-block {
-    margin-left: 20px;
-  }
+
   /* Video size: each video is 490px wide */
   #videos .video-block video {
     display: block;
@@ -96,11 +91,11 @@ ul.custom-bullets li::before {
   display: flex;
   justify-content: space-around; /* Distributes space around each video evenly */
   align-items: center; /* Aligns the videos vertically within the container */
-  width: 100%; /* Ensures the container takes full width of its parent */
+  width: 80%; /* Ensures the container takes full width of its parent */
 }
 
 #each-video-container video {
-  width: 23%; /* Matches the individual video sizes in the multi-video layout */
+  width: 80%; /* Matches the individual video sizes in the multi-video layout */
   margin: 0 1%; /* Adds a small margin between videos */
 }
 
